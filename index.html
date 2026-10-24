@@ -2,73 +2,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6750e8">
-  <title>DeutschUp — Learn Languages</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #202044;
-      background: linear-gradient(135deg, #f3f0ff, #e9f7ff);
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-    main {
-      width: 100%;
-      max-width: 620px;
-      background: white;
-      border-radius: 28px;
-      padding: 42px 26px;
-      text-align: center;
-      box-shadow: 0 20px 60px #30208020;
-    }
-    .logo {
-      width: 86px;
-      height: 86px;
-      border-radius: 25px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 20px;
-      color: white;
-      font-size: 42px;
-      background: linear-gradient(135deg, #7557f6, #4296ff);
-    }
-    h1 { font-size: 42px; margin: 0 0 12px; }
-    p { color: #62627a; line-height: 1.7; }
-    .button {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 16px 25px;
-      border-radius: 14px;
-      background: #6750e8;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .button:hover { background: #5038ce; }
-    .note { font-size: 13px; margin-top: 20px; }
-    footer { margin-top: 28px; font-size: 12px; color: #85859a; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b18">
+<meta name="description" content="DeutschUp — learn languages, build skills, and level up every day.">
+<title>DeutschUp — Enter Your Next Level</title>
+<style>
+:root {
+  --bg:#090b18;
+  --panel:#111329;
+  --panel2:#171a35;
+  --purple:#8a70ff;
+  --cyan:#5be7e3;
+  --text:#f7f6ff;
+  --muted:#aaaac6;
+  --line:rgba(174,164,255,.17);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button,a{-webkit-tap-highlight-color:transparent}
+.container{width:min(1160px,90%);margin:auto}
+.ambient{
+  position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 15% 15%,rgba(105,74,255,.19),transparent 42%),
+    radial-gradient(ellipse at 85% 35%,rgba(36,191,226,.10),transparent 38%),
+    radial-gradient(ellipse at 50% 100%,rgba(114,69,226,.13),transparent 45%);
+}
+.ambient:after{
+  content:"";position:absolute;inset:0;opacity:.15;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:55px 55px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(9,11,24,.78);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:23px;letter-spacing:-1px}
+.logo{
+  width:43px;height:43px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#a28cff,#5845ed);
+  box-shadow:0 0 30px rgba(127,98,255,.35);font-size:23px;
+}
+.navlinks{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:14px;font-weight:650}
+.navlinks a:hover{color:white}
+.nav-download{
+  padding:12px 17px;border-radius:12px;
+  color:white!important;background:linear-gradient(110deg,#7459ef,#5144d7);
+  box-shadow:0 0 25px rgba(111,81,255,.2);
+}
+.hero{padding:92px 0 75px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:55px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;padding:9px 13px;
+  border:1px solid var(--line);border-radius:100px;
+  background:rgba(135,112,255,.08);color:#c7bcff;
+  font-size:11px;letter-spacing:1.5px;font-weight:850;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(47px,6.3vw,78px);letter-spacing:-4.5px;line-height:1.01;margin:26px 0 22px}
+.gradient-text{
+  background:linear-gradient(100deg,#c0a9ff 5%,#8b7aff 42%,#5be7e3 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lead{max-width:540px;color:var(--muted);font-size:17px;line-height:1.85}
+.actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 21px;border-radius:14px;font-size:14px;font-weight:850;
+  transition:transform .2s,filter .2s,border-color .2s;
+}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.12)}
+.btn-primary{
+  background:linear-gradient(110deg,#9178ff,#5d50ec);color:white;
+  box-shadow:0 10px 40px rgba(108,79,255,.3);
+}
+.btn-secondary{border:1px solid var(--line);background:rgba(255,255,255,.035);color:#e4e2ff}
+.note{color:#8585a7;font-size:12px;margin-top:17px}
+.visual{min-height:440px;position:relative;display:grid;place-items:center}
+.orb{
+  position:absolute;width:330px;height:330px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(112,78,255,.27),rgba(52,218,231,.08));
+  filter:blur(2px);box-shadow:0 0 100px rgba(110,79,255,.13);
+}
+.orb:before,.orb:after{
+  content:"";position:absolute;inset:20px;border:1px solid rgba(167,149,255,.2);border-radius:50%;
+  transform:rotateX(66deg) rotateZ(25deg) scale(1.2);
+}
+.orb:after{transform:rotateX(66deg) rotateZ(-32deg) scale(1.4)}
+.mockup{
+  position:relative;width:min(100%,360px);padding:24px;border-radius:27px;
+  border:1px solid rgba(191,177,255,.25);
+  background:linear-gradient(145deg,rgba(30,31,67,.94),rgba(14,17,38,.96));
+  box-shadow:0 25px 90px rgba(0,0,0,.4),0 0 55px rgba(107,78,255,.13);
+  transform:rotate(2deg);
+}
+.mock-top{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:850}
+.level{padding:7px 10px;border-radius:9px;background:rgba(137,112,255,.16);color:#c3b5ff;font-size:10px}
+.welcome{font-size:23px;font-weight:900;margin:25px 0 6px;letter-spacing:-.6px}
+.sub{font-size:12px;color:var(--muted)}
+.course{
+  display:flex;align-items:center;gap:14px;padding:15px;margin-top:16px;
+  border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.035);
+}
+.flag{font-size:27px}
+.course strong{font-size:13px;display:block;margin-bottom:5px}
+.course small{font-size:11px;color:var(--muted)}
+.course .arrow{margin-left:auto;color:#a99bff;font-size:20px}
+.mini-progress{height:6px;background:#292945;border-radius:99px;margin-top:10px;overflow:hidden}
+.mini-progress span{display:block;width:72%;height:100%;background:linear-gradient(90deg,#9277ff,#5be7e3);border-radius:99px}
+.float{
+  position:absolute;padding:13px 15px;border:1px solid var(--line);border-radius:14px;
+  background:rgba(20,22,47,.94);box-shadow:0 12px 40px #0004;
+  font-size:12px;font-weight:800;backdrop-filter:blur(15px);
+}
+.float-one{top:43px;right:-5px}
+.float-two{bottom:46px;left:-18px}
+.float .em{font-size:18px;margin-right:7px}
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:24px 0;color:#b9b8d4;font-size:12px;font-weight:750}
+.trust-item{display:flex;align-items:center;gap:9px}
+.trust-item span{font-size:18px}
+section.content{padding:95px 0}
+.section-head{text-align:center;max-width:650px;margin:0 auto 43px}
+.kicker{color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:2px}
+h2{font-size:clamp(32px,4vw,47px);letter-spacing:-2px;line-height:1.1;margin:14px 0}
+.section-head p{color:var(--muted);line-height:1.8;font-size:15px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.feature{
+  padding:27px;border:1px solid var(--line);border-radius:21px;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  transition:transform .2s,border-color .2s;
+}
+.feature:hover{transform:translateY(-5px);border-color:rgba(149,127,255,.5)}
+.feature-icon{
+  width:51px;height:51px;border-radius:15px;display:grid;place-items:center;
+  font-size:24px;background:linear-gradient(145deg,rgba(137,112,255,.2),rgba(91,231,227,.08));
+  border:1px solid var(--line);
+}
+.feature h3{font-size:17px;margin:20px 0 9px}
+.feature p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}
+.cta-wrap{padding:20px 0 100px}
+.cta{
+  position:relative;overflow:hidden;text-align:center;padding:65px 24px;
+  border:1px solid rgba(167,145,255,.25);border-radius:29px;
+  background:radial-gradient(ellipse at 50% 120%,rgba(96,72,255,.3),transparent 60%),
+    linear-gradient(135deg,#151731,#11142a);
+}
+.cta:before{
+  content:"";position:absolute;width:300px;height:300px;border-radius:50%;
+  top:-240px;left:calc(50% - 150px);background:#7560ff;filter:blur(100px);opacity:.35;
+}
+.cta h2,.cta p,.cta a{position:relative}
+.cta p{max-width:500px;margin:0 auto;color:var(--muted);line-height:1.8}
+.cta .btn{margin-top:25px}
+footer{border-top:1px solid var(--line);padding:26px 0;color:#8585a7;font-size:12px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+footer a{color:#c4bcff}
+@media(max-width:850px){
+ .hero-grid{grid-template-columns:1fr;gap:15px}
+ .hero{padding-top:65px}
+ .visual{min-height:405px}
+ .features{grid-template-columns:repeat(2,1fr)}
+ .float-one{right:3%}.float-two{left:1%}
+}
+@media(max-width:560px){
+ .container{width:90%}
+ .nav{height:67px}
+ .brand{font-size:20px}
+ .navlinks{gap:0}
+ .navlinks>a:not(.nav-download){display:none}
+ .nav-download{padding:10px 12px;font-size:12px}
+ h1{letter-spacing:-2.7px}
+ .hero{padding:55px 0 45px}
+ .lead{font-size:15px}
+ .actions{flex-direction:column}
+ .btn{width:100%}
+ .visual{min-height:365px}
+ .mockup{padding:19px}
+ .orb{width:270px;height:270px}
+ .float-one{top:12px}
+ .float-two{bottom:20px}
+ .features{grid-template-columns:1fr}
+ section.content{padding:70px 0}
+ .trust-inner{gap:18px}
+ .cta{padding:48px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*:before,*:after{transition:none!important;animation:none!important}
+}
+</style>
 </head>
 <body>
-  <main>
-    <div class="logo">🌍</div>
-    <h1>DeutschUp</h1>
-    <p><strong>Learn languages. Level up your skills.</strong></p>
-    <p>Practice languages with lessons, grammar exercises, speaking practice, stories, and progress tracking.</p>
+<div class="ambient"></div>
 
-    <a class="button"
-       href="https://github.com/alisinaj986-ship-it/DeutschUp/releases/latest/download/app-release.apk">
-       Download for Android
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">
+      <span class="logo">🌍</span> DeutschUp
     </a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#download" class="nav-download">Get the app ↗</a>
+    </nav>
+  </div>
+</header>
 
-    <p class="note">Android app • Version 1.0.0</p>
-    <footer>© 2026 DeutschUp</footer>
-  </main>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> THE FUTURE OF YOUR LEARNING</div>
+        <h1>Your world.<br>Your words.<br><span class="gradient-text">Your next level.</span></h1>
+        <p class="lead">
+          Turn small daily steps into big progress.
+          Explore languages, practice grammar, improve your speaking,
+          and build skills with DeutschUp.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="https://github.com/alisinaj986-ship-it/DeutschUp/releases/download/v1.0.4/app-release.apk">
+            ↓ Download for Android
+          </a>
+          <a class="btn btn-secondary" href="#features">Explore DeutschUp ↘</a>
+        </div>
+        <div class="note">ANDROID APK · VERSION 1.0.4 · FREE TO DOWNLOAD</div>
+      </div>
+
+      <div class="visual" aria-label="Decorative language-learning app preview">
+        <div class="orb"></div>
+        <div class="float float-one"><span class="em">✨</span>Every day is progress</div>
+        <div class="mockup">
+          <div class="mock-top">
+            <span>DEUTSCHUP / HOME</span>
+            <span class="level">LEVEL UP</span>
+          </div>
+          <div class="welcome">Ready to learn?</div>
+          <div class="sub">Your next lesson is waiting.</div>
+
+          <div class="course">
+            <span class="flag">🇩🇪</span>
+            <div><strong>German practice</strong><small>Words, grammar & more</small></div>
+            <span class="arrow">↗</span>
+          </div>
+          <div class="course">
+            <span class="flag">📚</span>
+            <div><strong>Discover & explore</strong><small>Build your skills step by step</small></div>
+            <span class="arrow">↗</span>
+          </div>
+          <div style="margin-top:23px;font-size:12px;font-weight:800;display:flex;justify-content:space-between">
+            <span>Your journey</span><span style="color:#5be7e3">Keep going</span>
+          </div>
+          <div class="mini-progress"><span></span></div>
+          <div class="sub" style="margin-top:10px">One lesson can start a new habit.</div>
+        </div>
+        <div class="float float-two"><span class="em">🚀</span>Unlock your potential</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="container trust-inner">
+      <div class="trust-item"><span>📖</span> Learn at your pace</div>
+      <div class="trust-item"><span>🎯</span> Practice your skills</div>
+      <div class="trust-item"><span>⚡</span> Keep moving forward</div>
+    </div>
+  </div>
+
+  <section class="content" id="features">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">MADE FOR YOUR JOURNEY</div>
+        <h2>More than memorizing words.</h2>
+        <p>
+          Discover different ways to learn, build confidence,
+          and make progress one practice session at a time.
+        </p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="feature-icon">🔤</div>
+          <h3>Words & alphabets</h3>
+          <p>Get familiar with letters and the foundations of a language.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">🧠</div>
+          <h3>Grammar practice</h3>
+          <p>Challenge yourself with exercises that help reinforce what you learn.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">🎙️</div>
+          <h3>Speaking practice</h3>
+          <p>Practice spoken language and work toward speaking with confidence.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">📚</div>
+          <h3>Stories to explore</h3>
+          <p>Explore reading activities and experience language in context.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">🏆</div>
+          <h3>Progress & XP</h3>
+          <p>Keep an eye on your learning journey and celebrate your effort.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">🌐</div>
+          <h3>Explore languages</h3>
+          <p>Discover language-learning activities from one place.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-wrap" id="download">
+    <div class="container">
+      <div class="cta">
+        <div class="kicker">YOUR NEXT CHAPTER STARTS NOW</div>
+        <h2>Ready to level up?</h2>
+        <p>
+          Start learning with DeutschUp. Make a little progress today,
+          then come back tomorrow and keep building.
+        </p>
+        <a class="btn btn-primary"
+           href="https://github.com/alisinaj986-ship-it/DeutschUp/releases/download/v1.0.4/app-release.apk">
+          ↓ Get DeutschUp for Android
+        </a>
+        <div class="note">Version 1.0.4 · Android APK</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="brand" href="#" style="font-size:16px"><span class="logo" style="width:32px;height:32px;font-size:17px;border-radius:10px">🌍</span> DeutschUp</a>
+    <span>Keep learning. Keep leveling up.</span>
+    <span>© 2026 DeutschUp</span>
+  </div>
+</footer>
 </body>
 </html>
